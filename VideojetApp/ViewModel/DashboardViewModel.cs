@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FileBrowserLibrary;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
+using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using VideojetApp.Command;
-using VideojetApp.Properties;
-using VideojetApp.View;
-using FileBrowserLibrary;
-using System.Net.Sockets;
 using VideoJetApp.ViewModels;
-using System.Windows.Media;
-using System.Windows.Controls;
 
 
 
@@ -36,6 +29,7 @@ namespace VideojetApp.ViewModel
         private TcpClient _client;
 
 
+        public ICommand SettingsCommand { get; }
         public ICommand BrowseFileCommand { get; }
         public ICommand SignOutCommand { get; }
         public ICommand ConnectCommand { get; }
@@ -79,14 +73,14 @@ namespace VideojetApp.ViewModel
             set { connectionstatus = value; OnPropertyChanged(nameof(ConnectionStatus)); }
         }
 
-        
+
         public DashboardViewModel(Window currentWindow)
         {
             connectionService = new ConnectionService();
             _currentWindow = currentWindow;
 
             SignOutCommand = new RelayCommand(SignOut);
-
+            SettingsCommand = new RelayCommand(ShowSettings);
             fileBrowserService = new FileBrowserService();
             BrowseFileCommand = new RelayCommand(BrowseFile);
             StartCommand = new RelayCommand(SendStartCommand);
@@ -97,7 +91,10 @@ namespace VideojetApp.ViewModel
 
         }
 
+        private void ShowSettings()
+        {
 
+        }
         private void BrowseFile()
         {
 
@@ -136,11 +133,11 @@ namespace VideojetApp.ViewModel
             if (isConnected)
             {
                 ConnectionStatus = "Connected";
-                
+
             }
             else
             {
-                
+
                 ConnectionStatus = "Failed to connect";
             }
         }
@@ -203,7 +200,7 @@ namespace VideojetApp.ViewModel
 
                     // Wait for the PRC<CR> acknowledgment
                     string response = await connectionService.Receive();  // Await the server response
-                    
+
 
                     if (response == "PRC")
                     {
@@ -217,7 +214,7 @@ namespace VideojetApp.ViewModel
                     else
                     {
                         MessageBox.Show("Unexpected response from server: " + response, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        break; 
+                        break;
                     }
                 }
 
