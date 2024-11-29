@@ -1,0 +1,45 @@
+﻿<Window x:Class="VideojetApp.ButtonsControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideojetApp" 
+        xmlns:View="clr-namespace:VideojetApp.View"
+        xmlns:ViewModel="clr-namespace:VideojetApp.ViewModel"
+        mc:Ignorable="d"
+        Title="ButtonsControl" Height="450" Width="950">
+
+    <!--<Window.Resources>
+         --><!--DataTemplate for DashboardViewModel--><!-- 
+        <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}" >
+            <View:Dashboard1 />
+        </DataTemplate>
+
+         --><!--DataTemplate for SettingsViewModel--><!-- 
+        <DataTemplate DataType="{x:Type ViewModel:SettingsViewModel}">
+            <View:Settings />
+        </DataTemplate>
+    </Window.Resources>-->
+
+    <Grid>
+        
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Background="Black">
+            <Button Content="Dashboard" Height="25"  Margin="5,120,5,5" Command="{Binding ShowDashboardCommand}"/>
+            <Button Content="Settings" Height="25" Margin="5,0,5,5" Command="{Binding ShowSettingsCommand}"/>
+            <Button Content="Sign-Out" Height="25" Margin="5,0,5,5" Command="{Binding SignOutCommand}"/>
+        </StackPanel>
+
+       
+        
+        <!-- Content Area -->
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Margin="5,0,0,0"  />
+
+    </Grid>
+    
+</Window>

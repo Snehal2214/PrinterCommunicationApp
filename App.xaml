@@ -1,0 +1,16 @@
+﻿<Application x:Class="VideojetApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:VideojetApp"
+             xmlns:ViewModel="clr-namespace:VideojetApp.ViewModel"
+             xmlns:View="clr-namespace:VideojetApp.View"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <!--<ViewModel:DashboardViewModel x:Key="DashboardViewModel" />
+        <View:Dashboard1 x:Key="Dashboard1" DataContext="{StaticResource DashboardViewModel}" />-->
+    </Application.Resources>
+
+    
+
+</Application>
