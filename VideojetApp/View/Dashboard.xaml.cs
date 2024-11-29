@@ -25,7 +25,7 @@ namespace VideojetApp.View
         {
             InitializeComponent();
             
-            DataContext = new DashboardViewModel(this);
+            //this.DataContext = new DashboardViewModel(this);
         }
     }
 }
